@@ -15,5 +15,9 @@
   },
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "i18n-ally.localesPaths": [
+    "src/locales",
+    "internals/startingTemplate/src/locales"
+  ]
 }
