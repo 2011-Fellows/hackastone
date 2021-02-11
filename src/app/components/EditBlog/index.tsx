@@ -5,7 +5,11 @@ import styled from 'styled-components/macro'
 
 export function EditBlog() {
   return (
-    <EditorJS holder="hackastone" tools={EDITOR_JS_TOOLS}>
+    <EditorJS
+      holder="hackastone"
+      tools={EDITOR_JS_TOOLS}
+      placeholder="Begin editing here..."
+    >
       <Div id="hackastone" />
     </EditorJS>
   )
