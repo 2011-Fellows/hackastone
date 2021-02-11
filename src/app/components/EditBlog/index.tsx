@@ -19,7 +19,7 @@ const Div = styled.div`
   width: 85%;
   background-color: #efefef;
   border: 1px solid #3e3e3e;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  margin: 0 auto;
+  margin: 6rem auto;
 `
