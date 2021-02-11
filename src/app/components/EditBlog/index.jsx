@@ -5,12 +5,17 @@ import styled from 'styled-components/macro'
 
 export function EditBlog() {
   return (
-    <Editor holder="hackastone" tools={EDITOR_JS_TOOLS}>
-      <div id="hackastone" />
-    </Editor>
+    <EditorJS holder="hackastone" tools={EDITOR_JS_TOOLS}>
+      <Div id="hackastone" />
+    </EditorJS>
   )
 }
 
-const Editor = styled(EditorJS)`
-  background-color: blue;
+const Div = styled.div`
+  width: 85%;
+  background-color: #efefef;
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  margin: 0 auto;
 `
