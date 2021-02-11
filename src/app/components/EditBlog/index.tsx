@@ -1,17 +1,27 @@
-import * as React from 'react'
+import React, { useRef } from 'react'
 import EditorJS from 'react-editor-js'
 import { EDITOR_JS_TOOLS } from '../../../utils/tools'
 import styled from 'styled-components/macro'
 
 export function EditBlog() {
+  const instanceRef: any = useRef(null)
+
+  async function handleSave() {
+    const savedData = await instanceRef.current.save()
+    console.log(savedData)
+  }
   return (
-    <EditorJS
-      holder="hackastone"
-      tools={EDITOR_JS_TOOLS}
-      placeholder="Begin editing here..."
-    >
-      <Div id="hackastone" />
-    </EditorJS>
+    <>
+      <EditorJS
+        holder="hackastone"
+        tools={EDITOR_JS_TOOLS}
+        placeholder="Begin editing here..."
+        instanceRef={(instance) => (instanceRef.current = instance)}
+      >
+        <Div id="hackastone" />
+      </EditorJS>
+      <button onClick={() => handleSave()}>Save Post</button>
+    </>
   )
 }
 
