@@ -2,6 +2,7 @@ import React, { useRef } from 'react'
 import EditorJS from 'react-editor-js'
 import { EDITOR_JS_TOOLS } from '../../../utils/tools'
 import styled from 'styled-components/macro'
+import { SaveButton as Button } from './SaveButton'
 
 export function EditBlog() {
   const instanceRef: any = useRef(null)
@@ -31,19 +32,4 @@ const Div = styled.div`
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   margin: 6rem auto 2rem;
   position: relative;
-`
-
-const Button = styled.a`
-  background-color: #4caf50;
-  border: none;
-  border-radius: 50px;
-  color: #efefef;
-  padding: 1rem 2rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
-  font-size: 1rem;
-  margin: 1rem auto;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
 `

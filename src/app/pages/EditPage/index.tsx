@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { NavBar } from 'app/components/NavBar'
 import { PageWrapper } from 'app/components/PageWrapper'
-import { EditBlog } from 'app/components/EditBlog'
+import { EditBlog } from 'app/components/EditBox'
 
 export function EditPage() {
   return (

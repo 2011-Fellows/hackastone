@@ -4,7 +4,6 @@ import { NavBar } from 'app/components/NavBar'
 import { Masthead } from './Masthead'
 import { Features } from './Features'
 import { PageWrapper } from 'app/components/PageWrapper'
-import { EditBlog } from 'app/components/EditBlog'
 
 export function HomePage() {
   return (
