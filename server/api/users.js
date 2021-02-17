@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { createJsxClosingElement } = require('typescript');
 const { User } = require('../db/models');
 module.exports = router;
 
@@ -34,7 +33,9 @@ router.post('/', async (req, res, next) => {
 router.get('/:userId', async (req, res, next) => {
   try {
     const userId = Number(req.params.userId);
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(userId, {
+      attributes: ['id', 'firstName', 'email'],
+    });
     const userArticle = await user.getArticles();
     if (!user) return res.sendStatus(404);
     res.json({ user: user, articles: userArticle });
@@ -72,15 +73,3 @@ router.delete('/:userId', async (req, res, next) => {
     next(err);
   }
 });
-//Article
-//GET
-//PUT
-//DELETE
-//POST
-// {
-//   "firstName": "David",
-//   "lastName": "Serga",
-//   "email": "ya@gmail.com",
-//   "password": "123",
-//   "status": "admin"
-// }
