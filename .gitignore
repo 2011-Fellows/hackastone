@@ -21,5 +21,6 @@ generated-cra-app
 .cra-template-rb
 template
 
+.history/
 # secrets
 .env

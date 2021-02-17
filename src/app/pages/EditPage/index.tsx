@@ -1,24 +1,19 @@
 import * as React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { NavBar } from 'app/components/NavBar'
-import { Masthead } from './Masthead'
-import { Features } from './Features'
 import { PageWrapper } from 'app/components/PageWrapper'
+import { EditBlog } from 'app/components/EditBox'
 
-export function HomePage() {
+export function EditPage() {
   return (
     <>
       <Helmet>
-        <title>Home Page</title>
-        <meta
-          name="description"
-          content="A React Boilerplate application homepage"
-        />
+        <title>Edit Blog Page</title>
+        <meta name="description" content="Create or edit a blog post" />
       </Helmet>
       <NavBar />
       <PageWrapper>
-        <Masthead />
-        <Features />
+        <EditBlog />
       </PageWrapper>
     </>
   )
