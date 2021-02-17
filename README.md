@@ -1,8 +1,8 @@
 <img width="914" alt="React Boilerplate Meets CRA" src="https://user-images.githubusercontent.com/3495307/80274591-2d5daa00-86e4-11ea-8fba-404f1cdba87e.png" align="center">
 <br />
 
-<div align="center" >Crafted for <strong>highly scalable</strong> & <strong>performant</strong> and <strong>easily maintainable</strong> React.js applications <br /> 
-with a focus on  
+<div align="center" >Crafted for <strong>highly scalable</strong> & <strong>performant</strong> and <strong>easily maintainable</strong> React.js applications <br />
+with a focus on
 <strong>best DX</strong> and <strong>best practices</strong>.
 </div>
 
@@ -76,6 +76,13 @@ yarn cleanAndSetup
 ```
 
 ---
+
+## Database setup
+
+- Create .env file with variables listed in .env.local
+- fetch .env variable values from one of the project contributors
+- connect to the database using either psql command or pgAdmin, see instructions [here](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ConnectToPostgreSQLInstance.html)
+- you now have access to modify the Database as needed with command '''npm run seed'''(ATTENTION: database is already pre-seeded for you)
 
 ## Features
 
