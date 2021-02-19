@@ -4,7 +4,7 @@ import { EDITOR_JS_TOOLS } from '../../../utils/tools'
 import styled from 'styled-components/macro'
 import { SaveButton as Button } from './SaveButton'
 
-export function EditBlog() {
+export function EditSavedArticle() {
   const instanceRef: any = useRef(null)
 
   const saved = {
