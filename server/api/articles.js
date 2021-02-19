@@ -14,10 +14,11 @@ router.get('/', async (req, res, next) => {
 
 //POST /api/articles
 router.post('/', async (req, res, next) => {
+  console.log("in the route")
   try {
     //Fields from the article post page
     const { title, content, category, likes, dislikes, userId } = req.body
-
+    console.log(req.body)
     const newArticle = await Article.create(req.body)
     const user = await User.findByPk(userId)
 
