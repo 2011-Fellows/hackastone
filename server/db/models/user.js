@@ -1,52 +1,52 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require('sequelize')
+const db = require('../db')
 
 const User = db.define('user', {
   firstName: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
   },
   lastName: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false,
+    allowNull: false
   },
   password: {
     type: Sequelize.STRING,
     // Making `.password` act like a func hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
-      return () => this.getDataValue('password');
-    },
+      return () => this.getDataValue('password')
+    }
   },
   salt: {
     type: Sequelize.STRING,
     // Making `.salt` act like a function hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
-      return () => this.getDataValue('salt');
-    },
+      return () => this.getDataValue('salt')
+    }
   },
   googleId: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
   },
   status: {
     type: Sequelize.ENUM('regUser', 'admin'),
-    defaultValue: 'regUser',
-  },
-});
+    defaultValue: 'regUser'
+  }
+})
 
-module.exports = User;
+module.exports = User
 
 /**
  * instanceMethods
  */
 User.prototype.correctPassword = function (candidatePwd) {
-  return User.encryptPassword(candidatePwd, this.salt()) === this.password();
-};
+  return User.encryptPassword(candidatePwd, this.salt()) === this.password()
+}
 
 /**
  * classMethods
