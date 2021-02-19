@@ -7,6 +7,25 @@ import { SaveButton as Button } from './SaveButton'
 export function EditBlog() {
   const instanceRef: any = useRef(null)
 
+const saved = {
+  time: 1552744582955,
+  blocks: [
+    {
+      "type" : "paragraph",
+      "data" : {
+          "text" : "This is text that I wrote earlier!"
+      }
+    },
+    {
+      "type" : "paragraph",
+      "data" : {
+          "text" : "And this is text in a separate block from earlier =]"
+      }
+    },
+  ],
+  version: "2.11.10"
+  }
+
   async function handleSave() {
     const savedData = await instanceRef.current.save()
     console.log(savedData)
@@ -17,6 +36,7 @@ export function EditBlog() {
       tools={EDITOR_JS_TOOLS}
       placeholder="Begin editing here..."
       instanceRef={(instance) => (instanceRef.current = instance)}
+      data={saved}
     >
       <Div id="hackastone" />
       <Button onClick={() => handleSave()}>Save Post</Button>
