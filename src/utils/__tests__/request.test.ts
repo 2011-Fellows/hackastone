@@ -2,16 +2,16 @@
  * Test the request function
  */
 
-import 'whatwg-fetch';
-import { request } from '../request';
+import 'whatwg-fetch'
+import { request } from '../request'
 
-declare let window: { fetch: jest.Mock };
+declare let window: { fetch: jest.Mock }
 
 describe('request', () => {
   // Before each test, stub the fetch function
   beforeEach(() => {
-    window.fetch = jest.fn();
-  });
+    window.fetch = jest.fn()
+  })
 
   describe('stubbing successful response', () => {
     // Before each test, pretend we got a successful response
@@ -19,43 +19,43 @@ describe('request', () => {
       const res = new Response('{"hello":"world"}', {
         status: 200,
         headers: {
-          'Content-type': 'application/json',
-        },
-      });
+          'Content-type': 'application/json'
+        }
+      })
 
-      window.fetch.mockReturnValue(Promise.resolve(res));
-    });
+      window.fetch.mockReturnValue(Promise.resolve(res))
+    })
 
-    it('should format the response correctly', done => {
+    it('should format the response correctly', (done) => {
       request('/thisurliscorrect')
         .catch(done)
-        .then(json => {
-          expect(json.hello).toBe('world');
-          done();
-        });
-    });
-  });
+        .then((json) => {
+          expect(json.hello).toBe('world')
+          done()
+        })
+    })
+  })
 
   describe('stubbing 204 response', () => {
     // Before each test, pretend we got a successful response
     beforeEach(() => {
       const res = new Response('', {
         status: 204,
-        statusText: 'No Content',
-      });
+        statusText: 'No Content'
+      })
 
-      window.fetch.mockReturnValue(Promise.resolve(res));
-    });
+      window.fetch.mockReturnValue(Promise.resolve(res))
+    })
 
-    it('should return null on 204 response', done => {
+    it('should return null on 204 response', (done) => {
       request('/thisurliscorrect')
         .catch(done)
-        .then(json => {
-          expect(json).toBeNull();
-          done();
-        });
-    });
-  });
+        .then((json) => {
+          expect(json).toBeNull()
+          done()
+        })
+    })
+  })
 
   describe('stubbing error response', () => {
     // Before each test, pretend we got an unsuccessful response
@@ -64,19 +64,19 @@ describe('request', () => {
         status: 404,
         statusText: 'Not Found',
         headers: {
-          'Content-type': 'application/json',
-        },
-      });
+          'Content-type': 'application/json'
+        }
+      })
 
-      window.fetch.mockReturnValue(Promise.resolve(res));
-    });
+      window.fetch.mockReturnValue(Promise.resolve(res))
+    })
 
-    it('should catch errors', done => {
-      request('/thisdoesntexist').catch(err => {
-        expect(err.response.status).toBe(404);
-        expect(err.response.statusText).toBe('Not Found');
-        done();
-      });
-    });
-  });
-});
+    it('should catch errors', (done) => {
+      request('/thisdoesntexist').catch((err) => {
+        expect(err.response.status).toBe(404)
+        expect(err.response.statusText).toBe('Not Found')
+        done()
+      })
+    })
+  })
+})
