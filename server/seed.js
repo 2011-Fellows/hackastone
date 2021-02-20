@@ -14,8 +14,59 @@ const users = [
   {
     firstName: 'Kathryn',
     lastName: 'Lam',
-    email: 'kathryn@gmail.com',
+    email: '123kat@gmail.com',
     password: 123
+  },
+  {
+    firstName: 'David',
+    lastName: 'Moon',
+    email: 'david@gmail.com',
+    password: 123
+  },
+  {
+    firstName: 'Leslie',
+    lastName: 'Meng',
+    email: 'leslie@gmail.com',
+    password: 123
+  },
+  {
+    firstName: 'Horace',
+    lastName: 'Zhang',
+    email: 'horace@gmail.com',
+    password: 123
+  },
+  {
+    firstName: 'Vito',
+    lastName: 'Lam',
+    email: 'vito@gmail.com',
+    password: 123
+  },
+  {
+    firstName: 'Maddie',
+    lastName: 'Higgins',
+    email: 'maddie@gmail.com',
+    password: 123
+  },
+  {
+    firstName: 'Horace',
+    lastName: 'Zhang',
+    email: 'horace@gmail.com',
+    password: 123,
+    status: 'admin'
+  },
+  {
+    firstName: 'Michael',
+    lastName: 'Maurer',
+    email: 'micheal@gmail.com',
+    password: 123,
+    status: 'admin'
+  },
+  {
+    firstName: 'Kelsey',
+    lastName: 'Schroeder',
+    email: 'kelsey@gmail.com',
+    password: 123,
+    status: 'admin'
   }
 ]
 
