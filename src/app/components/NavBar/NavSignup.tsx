@@ -1,12 +1,13 @@
 import * as React from 'react'
 import styled from 'styled-components/macro'
 
-export function Nav() {
+export function NavSignup() {
   return (
     <Wrapper>
-      <Item href="/edit">Blogs</Item>
-      <Item href="/">About</Item>
-      <Item href="/">Contact</Item>
+      <Item href="/">Sign Up</Item>
+      <LoginButton>
+        <Item href="/">Log In</Item>
+      </LoginButton>
     </Wrapper>
   )
 }
@@ -17,7 +18,7 @@ const Wrapper = styled.nav`
 `
 
 const Item = styled.a`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 font: Roboto;
   color: #000;
   cursor: pointer;
@@ -39,4 +40,9 @@ font: Roboto;
   .icon {
     margin-right: 0.25rem;
   }
+`
+const LoginButton = styled.button`
+  background: #5bc0be;
+  border-radius: 5px;
+  border: none;
 `
