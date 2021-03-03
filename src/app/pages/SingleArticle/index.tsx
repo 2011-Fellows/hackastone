@@ -6,9 +6,6 @@ import { PageWrapper } from 'app/components/PageWrapper'
 import axios from 'axios'
 
 export function SingleArticle() {
-  //write axios call to get single article using article ID
-  //set up react hook to componentDidMount using axios call
-  //edit link to refer to article id
   const [singleArticle, setSingleArticle] = useState({})
 
   useEffect(() => {
