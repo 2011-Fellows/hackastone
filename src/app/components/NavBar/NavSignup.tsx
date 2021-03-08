@@ -4,6 +4,7 @@ import styled from 'styled-components/macro'
 export function NavSignup() {
   return (
     <Wrapper>
+      <Item href='/profile'>Profile</Item>
       <Item href="/">Sign Up</Item>
       <LoginButton>
         <Item href="/">Log In</Item>
