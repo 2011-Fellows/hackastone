@@ -30,12 +30,6 @@ const users = [
     password: 123
   },
   {
-    firstName: 'Horace',
-    lastName: 'Zhang',
-    email: 'horace@gmail.com',
-    password: 123
-  },
-  {
     firstName: 'Vito',
     lastName: 'Lam',
     email: 'vito@gmail.com',
@@ -100,11 +94,14 @@ const seed = async () => {
     // Users
     const seededUsers = await User.bulkCreate(users)
     console.log(green('Seeded users'))
+    console.log(seededUsers.length)
 
     // Articles
     const seededArticles = await Article.bulkCreate(articles)
     console.log(green('Seeded articles'))
     await seededUsers[0].setArticles(seededArticles[0])
+    console.log(seededArticles.length)
+    
 
     console.log(green('Database sucessfully seeded'))
     db.close()
