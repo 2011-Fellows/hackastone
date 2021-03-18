@@ -76,9 +76,8 @@ export default function Profile(props) {
 
   return (
     <div>
-      <h2>{profileInfo.firstName}</h2>
-      <h3>{profileInfo.email}</h3>
-      <h3>Your Articles</h3>
+      <h1>{profileInfo.firstName}</h1>
+      <h2>{profileInfo.email}</h2>
       {articles.length ? (
         articles.map(
           (article: {
@@ -91,9 +90,9 @@ export default function Profile(props) {
             const time = new Date (content.time).toDateString()
             return (
               <div key={article.id}>
-                <p>Title: {article.title}</p>
+                <h3>Title: {article.title}</h3>
+                <p>Published: {time}</p>
                 <p>Category: {article.category}</p>
-                <p>Date: {time}</p>
               </div>
             )
           })
