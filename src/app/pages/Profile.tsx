@@ -38,7 +38,7 @@ interface contentObj {
   version: string
 }
 
-export default function Profile() {
+export default function Profile(props) {
   const articles = dummyData.articles.sort((a, b) => a.id - b.id)
   return (
     <div>
