@@ -19,7 +19,6 @@ import { EditPage } from './pages/EditPage'
 import { EditSaved } from './pages/EditSavedArticle'
 import ProfilePage from './pages/Profile'
 
-
 export function App() {
   const { i18n } = useTranslation()
   return (

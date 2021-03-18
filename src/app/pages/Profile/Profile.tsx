@@ -1,28 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useReducer } from 'react'
-
-
-const dummyData = {
-  firstName: 'Kelsey',
-  lastName: 'Schroeder',
-  email: 'kelsey@gmail.com',
-  articles: [
-    {
-      title: 'Subset Sum',
-      content:
-        '{"time":1613786130244,"blocks":[{"type":"paragraph","data":{"text":"&nbsp; &nbsp; &nbsp; Given a target sum and an array of positive integers, return true if any combination of numbers in the array can add to the target. Each number in the array may only be used once. Return false if the numbers cannot be used to add to the target sum."}},{"type":"paragraph","data":{"text":"&nbsp; &nbsp; &nbsp; With dynamic programming techniques—i.e. recognizing overlapping subproblems and avoiding repeated work—we can optimize this to O(n*m) where n is the target number and m is the size of the array of possible numbers to draw from. Both solutions below fall under the banner of dynamic programming. We can have an optimized bottom-u solution that is iterative. One approach is to accumulate a set of possible sums starting from 0. We could loop through each given number and add it to every number already in the set. We can then include each of these new possibilities into the possible sums set"}},{"type":"code","data":{"code":"console.log(hello world)"}}],"version":"2.19.1"}',
-      category: 'algo',
-      id: 1
-    },
-    {
-      title: 'Web Data Flow',
-      content:
-        '{"time":1613786346560,"blocks":[{"type":"paragraph","data":{"text":"A popular question in first interviews like on Launch Day is What happens when I type [website address] and click enter? Its a good conversation that can take up a good duration of time and show your technical communication chops. Its also very good to know what the process is like to get something like wikipedia.com on our screens"}}],"version":"2.19.1"}',
-      category: 'technology',
-      id: 2
-    }
-  ]
-}
+import styled from 'styled-components/macro'
 
 interface dataObj {
   text: string
@@ -41,7 +19,7 @@ interface contentObj {
 
 const SET_USER: string = 'SET_USER'
 
-function profileReducer(state = {}, action: { type: any; user: any }){
+function profileReducer(state = {}, action: { type: String; user: any }) {
   switch (action.type) {
     case SET_USER:
       return action.user
@@ -50,17 +28,16 @@ function profileReducer(state = {}, action: { type: any; user: any }){
   }
 }
 
-
 export default function Profile(props) {
   const [state, dispatch] = useReducer(profileReducer, {
     user: {},
     articles: []
   })
-  
+
   const articles = state.articles
   const profileInfo = state.user
 
-  async function getProfileInfo(userId){
+  async function getProfileInfo(userId) {
     try {
       const res = await axios.get(`/api/users/${userId}`)
       const userInfo = res.data
@@ -70,35 +47,60 @@ export default function Profile(props) {
     }
   }
 
-  useEffect(() =>{
-    getProfileInfo(props.match.params.userId)
-  }, [props.match.params.userId])
+  useEffect(() => {
+    getProfileInfo(props.userId)
+  }, [props.userId])
 
   return (
-    <div>
-      <h1>{profileInfo.firstName}</h1>
+    <Wrapper>
+      <Title>{profileInfo.firstName}</Title>
       <h2>{profileInfo.email}</h2>
-      {articles.length ? (
-        articles.map(
-          (article: {
-            content: string
-            id: string | number | null | undefined
-            title: String
-            category: String
-          }) => {
-            const content = JSON.parse(article.content)
-            const time = new Date (content.time).toDateString()
-            return (
-              <div key={article.id}>
-                <h3>Title: {article.title}</h3>
-                <p>Published: {time}</p>
-                <p>Category: {article.category}</p>
-              </div>
-            )
-          })
-      ) : (
-        <p>No articles Found</p>
-      )}
-    </div>
+      <Articles>
+        {articles.length ? (
+          articles.map(
+            (article: {
+              content: string
+              id: string | number | null | undefined
+              title: String
+              category: String
+            }) => {
+              const content: contentObj = JSON.parse(article.content)
+              const time = new Date(content.time).toDateString()
+              return (
+                <div key={article.id}>
+                  <h3>Title: {article.title}</h3>
+                  <p>Published: {time}</p>
+                  <p>Category: {article.category}</p>
+                </div>
+              )
+            }
+          )
+        ) : (
+          <p>No articles Found</p>
+        )}
+      </Articles>
+    </Wrapper>
   )
 }
+
+const Title = styled.h1`
+  font-size: 32px;
+  font-weight: bold;
+  color: ${(p) => p.theme.text};
+  margin: 1rem 0;
+`
+
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+`
+
+const Articles = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+`

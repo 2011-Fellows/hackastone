@@ -4,7 +4,7 @@ import { NavBar } from 'app/components/NavBar'
 import { PageWrapper } from 'app/components/PageWrapper'
 import Profile from './Profile'
 
-export default function ProfilePage() {
+export default function ProfilePage(props) {
   return (
     <>
       <Helmet>
@@ -16,7 +16,7 @@ export default function ProfilePage() {
       </Helmet>
       <NavBar />
       <PageWrapper>
-        <Profile />
+        <Profile userId={props.match.params.userId} />
       </PageWrapper>
     </>
   )
