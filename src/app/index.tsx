@@ -43,7 +43,7 @@ export function App() {
           path={process.env.PUBLIC_URL + '/editSaved'}
           component={EditSaved}
         />
-        <Route path={process.env.PUBLIC_URL + '/profile'} component={Profile} />
+        <Route path={process.env.PUBLIC_URL + '/:userId'} component={Profile} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

@@ -1,4 +1,5 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useReducer } from 'react'
 
 
 const dummyData = {
@@ -28,37 +29,74 @@ interface dataObj {
 }
 
 interface blockObj {
-  type: string,
-  data: {[key: string]: dataObj}
+  type: string
+  data: { [key: string]: dataObj }
 }
 
 interface contentObj {
-  time: number,
-  blocks: Array<{[key:string]: blockObj}>
+  time: number
+  blocks: Array<{ [key: string]: blockObj }>
   version: string
 }
 
+const SET_USER: string = 'SET_USER'
+
+function profileReducer(state = {}, action: { type: any; user: any }){
+  switch (action.type) {
+    case SET_USER:
+      return action.user
+    default:
+      return state
+  }
+}
+
+
 export default function Profile(props) {
-  const articles = dummyData.articles.sort((a, b) => a.id - b.id)
+  const [state, dispatch] = useReducer(profileReducer, {
+    user: {},
+    articles: []
+  })
+  
+  const articles = state.articles
+  const profileInfo = state.user
+
+  async function getProfileInfo(userId){
+    try {
+      const res = await axios.get(`/api/users/${userId}`)
+      const userInfo = res.data
+      dispatch({ type: SET_USER, user: userInfo })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() =>{
+    getProfileInfo(props.match.params.userId)
+  }, [props.match.params.userId])
+
   return (
     <div>
-      <h2>
-        {dummyData.firstName} {dummyData.lastName}
-      </h2>
-      <h3>{dummyData.email}</h3>
+      <h2>{profileInfo.firstName}</h2>
+      <h3>{profileInfo.email}</h3>
       <h3>Your Articles</h3>
       {articles.length ? (
-        articles.map((article) => {
-          const content: contentObj = JSON.parse(article.content)
-          const time = new Date(content.time).toDateString()
-          return (
-            <div key={article.id}>
-              <p>Title: {article.title}</p>
-              <p>Category: {article.category}</p>
-              <p>Date: {time}</p>
-            </div>
-          )
-        })
+        articles.map(
+          (article: {
+            content: string
+            id: string | number | null | undefined
+            title: String
+            category: String
+          }) => {
+            const content = JSON.parse(article.content)
+            const time = new Date (content.time).toDateString()
+            return (
+              <div key={article.id}>
+                <p>Title: {article.title}</p>
+                <p>Category: {article.category}</p>
+                <p>Date: {time}</p>
+              </div>
+            )
+          })
       ) : (
         <p>No articles Found</p>
       )}
