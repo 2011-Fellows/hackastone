@@ -1,9 +1,10 @@
 const Sequelize = require('sequelize')
 const pkg = require('../../package.json')
+require('dotenv').config()
 
 const db = new Sequelize({
-  database: process.env.DATABASE_NAME,
-  username: process.env.DATABASE_USER,
+  database: process.env.DATABASE_USER,
+  username: process.env.DATABASE_NAME,
   password: process.env.PASSWORD,
   host: process.env.DATABASE_URL,
   port: 5432,
