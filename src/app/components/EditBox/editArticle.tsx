@@ -8,23 +8,23 @@ export function EditSavedArticle() {
   const instanceRef: any = useRef(null)
 
   const saved = {
-    "time" : 1550476186479,
-    "blocks" : [
-        {
-            "type" : "paragraph",
-            "data" : {
-                "text" : "I wrote this text earlier!"
-            }
-        },
-        {
-            "type" : "paragraph",
-            "data" : {
-                "text" : "This is also from earlier, but in a separate block!"
-            }
+    time: 1550476186479,
+    blocks: [
+      {
+        type: 'paragraph',
+        data: {
+          text: 'I wrote this text earlier!'
         }
+      },
+      {
+        type: 'paragraph',
+        data: {
+          text: 'This is also from earlier, but in a separate block!'
+        }
+      }
     ],
-    "version" : "2.8.1"
-}
+    version: '2.8.1'
+  }
 
   async function handleSave() {
     const savedData = await instanceRef.current.save()

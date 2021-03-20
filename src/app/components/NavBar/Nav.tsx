@@ -17,8 +17,8 @@ const Wrapper = styled.nav`
 `
 
 const Item = styled.a`
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-font: Roboto;
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+  font: Roboto;
   color: #000;
   cursor: pointer;
   text-decoration: none;

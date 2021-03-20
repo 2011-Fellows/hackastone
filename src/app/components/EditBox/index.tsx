@@ -5,17 +5,21 @@ import styled from 'styled-components/macro'
 import { SaveButton as Button } from './SaveButton'
 import axios from 'axios'
 
-
 export function EditBlog() {
   const instanceRef: any = useRef(null)
 
   async function handleSave() {
     const savedData = await instanceRef.current.save()
     try {
-      console.log("in axios call")
-      await axios.post("/api/articles",
-      { "title": "Test article", "content": JSON.stringify(savedData), "category": "algo", "likes": 0, "dislikes": 0, "userId": 1 }
-      )
+      console.log('in axios call')
+      await axios.post('/api/articles', {
+        title: 'Test article',
+        content: JSON.stringify(savedData),
+        category: 'algo',
+        likes: 0,
+        dislikes: 0,
+        userId: 1
+      })
     } catch (error) {
       console.error(error)
     }
