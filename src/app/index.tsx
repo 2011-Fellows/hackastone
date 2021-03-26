@@ -17,6 +17,7 @@ import { NotFoundPage } from './pages/NotFoundPage/Loadable'
 import { useTranslation } from 'react-i18next'
 import { EditPage } from './pages/EditPage'
 import { EditSaved } from './pages/EditSavedArticle'
+import ProfilePage from './pages/Profile'
 
 export function App() {
   const { i18n } = useTranslation()
@@ -41,6 +42,10 @@ export function App() {
           exact
           path={process.env.PUBLIC_URL + '/editSaved'}
           component={EditSaved}
+        />
+        <Route
+          path={process.env.PUBLIC_URL + '/:userId'}
+          component={ProfilePage}
         />
         <Route component={NotFoundPage} />
       </Switch>

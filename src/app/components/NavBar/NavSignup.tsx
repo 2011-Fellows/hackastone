@@ -1,9 +1,14 @@
 import * as React from 'react'
 import styled from 'styled-components/macro'
 
-export function NavSignup() {
+export function NavSignup(props) {
   return (
     <Wrapper>
+      <Item 
+      // href={`/${props.user.id}`}
+      >
+        Profile
+      </Item>
       <Item href="/">Sign Up</Item>
       <LoginButton>
         <Item href="/">Log In</Item>
